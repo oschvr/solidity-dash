@@ -1,0 +1,16 @@
+CTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>dashIndexPath</key>
+    <string>index.html</string>
+    <key>CFBundleIdentifier</key>
+    <string>solidity</string>
+    <key>CFBundleName</key>
+    <string>Solidity</string>
+    <key>DocSetPlatformFamily</key>
+    <string>solidity</string>
+    <key>isDashDocset</key>
+    <true/>
+</dict>
+</plist>
+
