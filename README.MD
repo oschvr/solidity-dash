@@ -1,9 +1,7 @@
 [Solidity Docset](https://github.com/oschvr/solidity-dash)
 =======================
 
-This containst the last documentation for the [Solidity](solidity.readthedocs.io) programming language.
-
-This repository is the result of a personal quest for offline knowledge + the [unattended and much needed request](https://github.com/Kapeli/Dash-User-Contributions/issues/1685).
+This contains the docset generator for the last version of [Solidity](solidity.readthedocs.io) for Dash. Possibly for Zeal as well.
 
 ### How to
 
@@ -17,14 +15,13 @@ This repository is the result of a personal quest for offline knowledge + the [u
   - Run `populate.py` to iterate through the htmls and fill the db.
 
 
-### Dependencies
+#### Dependencies
 
 **npm**, **pip** to install dependencies.
 
 - [Sphinx](www.sphinx-doc.org), ethereum docs engine
 - [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/), to extract html tags.
 - [svgexport](https://github.com/shakiba/svgexport), since icon is in svg format.
-
 
 ### To do
 
