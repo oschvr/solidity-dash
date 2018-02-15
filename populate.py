@@ -15,19 +15,45 @@ docPath = 'solidity.docset/Contents/Resources/Documents'
 
 for docPage in os.listdir(docPath):
   if docPage.endswith('.html'):
-    print 'docPage: %s' % docPage
-    
-    page = open(os.path.join(docPath, docPage)).read()
-    soup = BeautifulSoup(page, 'lxml')
+   if not docPage.startswith('index'):
+    if not docPage.startswith('genindex'):
+      if not docPage.startswith('search'):
+        print 'docPage: %s' % docPage
+        
+        page = open(os.path.join(docPath, docPage)).read()
+        soup = BeautifulSoup(page, 'lxml')
 
-    any = re.compile('.*')
-    for tag in soup.find_all('a', {'href': any}):
-      name = tag.text.strip()
-      if len(name) > 1:
-        path = tag.attrs['href'].strip()
-        if path != 'index.html':
-          cur.execute('INSERT OR IGNORE INTO searchIndex(name, type, path) VALUES (?,?,?)', (name, 'func', path))
-          print 'name: %s, path: %s' % (name, path)
+        any = re.compile('.*')
+
+        for tag_h1 in soup.find_all('h1'):
+          name_h1 = tag_h1.text.strip()
+          if len(name_h1) > 1:
+            path_h1 = tag_h1.find('a').get('href')
+            path_h1 = docPage + path_h1
+            print path_h1
+            if path_h1 != 'index':
+              cur.execute('INSERT OR IGNORE INTO searchIndex(name, type, path) VALUES (?,?,?)', (name_h1, 'Guide', path_h1))
+              print 'name_h1: %s, path_h1: %s, type: Module \n' % (name_h1, path_h1)
+
+
+        for tag_h2 in soup.find_all('h2'):
+          name_h2 = tag_h2.text.strip()
+          if len(name_h2) > 1 and tag_h2.find('a') > 1:
+            path_h2 = tag_h2.find('a').get('href')
+            path_h2 = docPage + path_h2
+            if path_h2 != 'index.html':
+              cur.execute('INSERT OR IGNORE INTO searchIndex(name, type, path) VALUES (?,?,?)', (name_h2, 'Guide', path_h2))
+              print 'name_h2: %s, path_h2: %s, type: Guide \n' % (name_h2, path_h2) 
+
+
+        for tag_h3 in soup.find_all('h3'):
+          name_h3 = tag_h3.text.strip()
+          if len(name_h3) > 1 and tag_h3.find('a') > 1:
+            path_h3 = tag_h3.find('a').get('href')
+            path_h3 = docPage + path_h3
+            if path_h3 != 'index.html':
+              cur.execute('INSERT OR IGNORE INTO searchIndex(name, type, path) VALUES (?,?,?)', (name_h3, 'Guide', path_h3))
+              print 'name_h3: %s, path_h3: %s, type: Guide\n' % (name_h3, path_h3)      
 
 
 conn.commit()
