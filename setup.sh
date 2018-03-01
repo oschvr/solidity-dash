@@ -13,5 +13,6 @@ rm -rf solidity
 cp Info.plist solidity.docset/Contents
 cp docSet.dsidx solidity.docset/Contents/Resources
 svgexport icon.svg solidity.docset/icon.png 16:
-svgexport icon.svg solidity.docset/icon@2x 32:
-python populate.py 
+svgexport icon.svg solidity.docset/icon@2x.png 32:
+python populate.py
+tar --exclude='.DS_Store' -cvzf Solidity.tgz solidity.docset
