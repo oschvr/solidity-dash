@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 sudo npm i svgexport -g
-sudo pip install Sphinx BeautifulSoup
+sudo pip install lxml Sphinx BeautifulSoup4
 
 git clone https://github.com/ethereum/solidity
 cd  solidity/docs
